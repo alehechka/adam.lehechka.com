@@ -4,6 +4,9 @@ on:
     branches:
       - main
 
+env:
+  IMAGE_ID: ghcr.io/${{ github.repository }}
+
 jobs:
   lint-build:
     name: Lint and Build NextJS App
