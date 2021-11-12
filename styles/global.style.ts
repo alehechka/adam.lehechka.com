@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css, DefaultTheme } from 'styled-components';
 
 export const FontFamilyMixin = css`
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
@@ -22,13 +22,31 @@ export const theme = {
 	},
 } as const;
 
-export const lightTheme = {
+export const lightTheme: DefaultTheme = {
 	body: '#FFF',
+	text: '#363537',
+	components: {
+		iconButton: {
+			background: '#FCFCFC',
+			hover: '#CFCFCF',
+			color: '#363537',
+			disabled: '#FFF',
+		},
+	},
 	...theme,
 } as const;
 
-export const darkTheme = {
+export const darkTheme: DefaultTheme = {
 	body: '#363537',
+	text: '#FFF',
+	components: {
+		iconButton: {
+			background: '#353436',
+			hover: '#616161',
+			color: '#FFF',
+			disabled: '#2D2C2E',
+		},
+	},
 	...theme,
 } as const;
 
