@@ -1,6 +1,7 @@
-import ThemeToggle from '@components/ThemeToggle';
+import Navbar from '@components/Navbar';
 import useThemeToggle from '@hooks/useThemeToggle';
 import { ThemeObjectProps, lightTheme, darkTheme } from '@styles/global.style';
+import Layout from '@styles/Layout';
 import { AppProps } from 'next/app';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import reset from 'styled-reset';
@@ -15,12 +16,14 @@ const GlobalStyles = createGlobalStyle<ThemeObjectProps>`
 `;
 
 const App = ({ Component, pageProps }: AppProps) => {
-	const [theme, themeToggler] = useThemeToggle();
+	const [theme, toggleTheme] = useThemeToggle();
 	return (
 		<ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
 			<GlobalStyles />
-			<ThemeToggle themeToggler={themeToggler} />
-			<Component {...pageProps} />
+			<Layout>
+				<Navbar theme={theme} toggleTheme={toggleTheme} />
+				<Component {...pageProps} />
+			</Layout>
 		</ThemeProvider>
 	);
 };
