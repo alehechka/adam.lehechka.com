@@ -49,7 +49,3 @@ export const darkTheme: DefaultTheme = {
 	},
 	...theme,
 } as const;
-
-export type Theme = typeof lightTheme | typeof darkTheme;
-
-export type ThemeObjectProps = { theme: Theme };

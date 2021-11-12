@@ -1,12 +1,12 @@
 import Navbar from '@components/Navbar';
 import useThemeToggle from '@hooks/useThemeToggle';
-import { ThemeObjectProps, lightTheme, darkTheme } from '@styles/global.style';
+import { lightTheme, darkTheme } from '@styles/global.style';
 import Layout from '@styles/Layout';
 import { AppProps } from 'next/app';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import reset from 'styled-reset';
 
-const GlobalStyles = createGlobalStyle<ThemeObjectProps>`
+const GlobalStyles = createGlobalStyle`
   ${reset};
   body {
 	background: ${({ theme }) => theme.body};
