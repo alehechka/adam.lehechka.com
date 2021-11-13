@@ -4,14 +4,37 @@ import { lightTheme, darkTheme } from '@styles/global.style';
 import Layout from '@styles/Layout';
 import { AppProps } from 'next/app';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import reset from 'styled-reset';
 
 const GlobalStyles = createGlobalStyle`
-  ${reset};
+  html,
   body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+      Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    line-height: 1.6;
+    font-size: 18px;
 	background: ${({ theme }) => theme.body};
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.text};
 	transition: all 0.50s linear;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    color: #0070f3;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
   }
 `;
 
