@@ -5,7 +5,7 @@ medium: 'https://medium.com/swlh/deploying-a-react-app-to-google-cloud-run-with-
 github: 'https://github.com/alehechka/medium-react-gcr'
 ---
 
-![React, Docker, Google Cloud Run](/images/deploy-cra-gcr-gha/react_docker_gcr.png)
+![React, Docker, Google Cloud Run](/images/deploy-cra-gcr-gha/react_docker_gcr-no_background.png)
 
 Google’s Cloud Run product allows for scalable containerized applications in a fully managed serverless environment.
 
@@ -68,7 +68,7 @@ After creating all of the above files we have two more steps to complete before 
 ```bash
 npm run build
 
-// If you have Yarn installed, you can instead run:
+# If you have Yarn installed, you can instead run:
 
 yarn build
 ```
