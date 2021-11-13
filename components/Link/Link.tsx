@@ -15,7 +15,7 @@ const StyledLink = styled.a`
 
 const Link: FC<LinkProps> = ({ children, ...otherProps }) => {
 	return (
-		<NextLink {...otherProps}>
+		<NextLink {...otherProps} passHref>
 			<StyledLink>{children}</StyledLink>
 		</NextLink>
 	);
