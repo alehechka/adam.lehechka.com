@@ -1,0 +1,9 @@
+.iconLink {
+	color: inherit;
+	display: inherit;
+}
+
+.iconLink:focus,
+.iconLink:hover {
+	transform: scale(1.1);
+}

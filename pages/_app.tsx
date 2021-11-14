@@ -1,31 +1,16 @@
+import 'water.css/out/water.min.css';
+import 'highlight.js/styles/night-owl.css';
+import type { AppProps } from 'next/app';
+import styles from '@styles/App.module.css';
 import Navbar from '@components/Navbar';
-import useThemeToggle from '@hooks/useThemeToggle';
-import { ThemeObjectProps, lightTheme, darkTheme } from '@styles/global.style';
-import Layout from '@styles/Layout';
-import { AppProps } from 'next/app';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import reset from 'styled-reset';
 
-const GlobalStyles = createGlobalStyle<ThemeObjectProps>`
-  ${reset};
-  body {
-	background: ${({ theme }) => theme.body};
-    color: ${({ theme }) => theme.colors.primary};
-	transition: all 0.50s linear;
-  }
-`;
-
-const App = ({ Component, pageProps }: AppProps) => {
-	const [theme, toggleTheme] = useThemeToggle();
+function MyApp({ Component, pageProps }: AppProps) {
 	return (
-		<ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-			<GlobalStyles />
-			<Layout>
-				<Navbar theme={theme} toggleTheme={toggleTheme} />
-				<Component {...pageProps} />
-			</Layout>
-		</ThemeProvider>
+		<div className={styles.app}>
+			<Navbar />
+			<Component {...pageProps} />
+		</div>
 	);
-};
+}
 
-export default App;
+export default MyApp;

@@ -1,5 +1,3 @@
-import Title from '@components/Title';
-
 export default function Home() {
-	return <Title>My page</Title>;
+	return <h1>My page</h1>;
 }

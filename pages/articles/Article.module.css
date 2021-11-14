@@ -1,0 +1,28 @@
+.dateRow {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 10px;
+}
+
+.list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.listItem {
+	margin: 0 0 1.25rem;
+}
+
+.listSection {
+	font-size: 1.2rem;
+	line-height: 1.5;
+}
+
+.heading {
+	font-size: 1.5rem;
+	line-height: 1.4;
+	margin: 1rem 0;
+}
