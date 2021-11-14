@@ -1,8 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import matter, { GrayMatterFile } from 'gray-matter';
-import remark from 'remark';
-import html from 'remark-html';
 
 type ContentFolders = 'articles' | 'notes';
 
@@ -12,8 +10,9 @@ export type Metadata = GrayMatterFile<string> & {
 	id: string;
 	date: string;
 	title: string;
-	contentHtml?: string;
 	medium?: string;
+	github?: string;
+	content?: string;
 };
 
 export function getSortedContentData(folder: ContentFolders) {
@@ -80,14 +79,10 @@ export async function getContentData(folder: ContentFolders, id: string) {
 	// Use gray-matter to parse the content metadata section
 	const matterResult = matter(fileContents);
 
-	// Use remark to convert markdown into HTML string
-	const processedContent = await remark().use(html).process(matterResult.content);
-	const contentHtml = processedContent.toString();
-
 	// Combine the data with the id and contentHtml
 	return {
 		id,
-		contentHtml,
+		content: matterResult.content,
 		...matterResult.data,
 	} as Metadata;
 }

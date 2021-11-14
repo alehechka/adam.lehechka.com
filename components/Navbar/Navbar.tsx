@@ -1,29 +1,18 @@
-import ThemeToggle, { ThemeToggleProps } from '@components/ThemeToggle';
-import Link from '@components/Link';
-import styled from 'styled-components';
+import Link from 'next/link';
+import styles from './Navbar.module.css';
 
-interface Props extends ThemeToggleProps {}
+interface Props {}
 
-const Navbar = ({ theme, toggleTheme }: Props) => {
+const Navbar = (props: Props) => {
 	return (
-		<StyledNavbar>
+		<header className={styles.navbar}>
 			<Link href='/'>home</Link>
 			<Link href='/about'>about</Link>
 			<Link href='/notes'>notes</Link>
 			<Link href='/articles'>articles</Link>
 			<Link href='/projects'>projects</Link>
-			<ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-		</StyledNavbar>
+		</header>
 	);
 };
-
-const StyledNavbar = styled.header`
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	padding: 15px 0;
-	align-items: center;
-`;
 
 export default Navbar;

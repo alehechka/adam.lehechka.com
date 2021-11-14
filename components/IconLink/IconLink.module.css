@@ -1,0 +1,13 @@
+.iconLink {
+	color: inherit;
+	display: inherit;
+}
+
+.iconLink:hover {
+	cursor: pointer;
+}
+
+.iconLink:focus,
+.iconLink:hover {
+	transform: scale(1.1);
+}
