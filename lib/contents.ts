@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter, { GrayMatterFile } from 'gray-matter';
 
-type ContentFolders = 'articles' | 'notes';
+export type ContentFolders = 'articles' | 'notes';
 
 const contentDirectory = (folder: ContentFolders) => path.join(process.cwd(), `content/${folder}`);
 
