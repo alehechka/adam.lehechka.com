@@ -1,0 +1,30 @@
+.detailBox {
+	box-sizing: border-box;
+}
+
+.summaryBox {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+
+	font-size: large;
+	font-weight: 600;
+}
+
+.logo:hover,
+.logo:focus {
+	transform: scale(1.05);
+}
+
+.chevron {
+	margin-left: auto;
+	transition: 0.25s transform ease;
+}
+
+.detailBox[open] > summary > .chevron {
+	transform: rotate(90deg);
+}
+
+.date {
+	color: var(--text-muted);
+}
