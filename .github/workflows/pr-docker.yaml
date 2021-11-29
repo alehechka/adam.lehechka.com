@@ -3,9 +3,6 @@ on:
   pull_request:
     branches:
       - main
-  push:
-    branches:
-      - 'feature/docker-caching'
 
 env:
   REGISTRY_HOSTNAME: ghcr.io
