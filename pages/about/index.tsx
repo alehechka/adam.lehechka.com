@@ -1,5 +1,5 @@
 import { JobAccordion } from '@components/Accordion';
-import jobs from './jobs';
+import jobs from 'content/about/jobs';
 
 const About = () => {
 	return (
