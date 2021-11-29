@@ -1,8 +1,4 @@
-.detailBox {
-	box-sizing: border-box;
-}
-
-.summaryBox {
+.jobSummaryBox {
 	display: flex;
 	align-items: center;
 	gap: 10px;
@@ -16,15 +12,44 @@
 	transform: scale(1.05);
 }
 
-.chevron {
+.moveRight {
 	margin-left: auto;
+}
+
+.chevron {
 	transition: 0.25s transform ease;
 }
 
-.detailBox[open] > summary > .chevron {
+details[open] > summary > .chevron {
 	transform: rotate(90deg);
 }
 
 .date {
 	color: var(--text-muted);
+}
+
+.skill {
+	font-size: small;
+	color: var(--text-muted);
+}
+
+.projectSummaryBox {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.skillsWrapper {
+	display: flex;
+	justify-content: space-between;
+	max-width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.jobSummaryBox:hover,
+.jobSummaryBox:focus,
+.projectSummaryBox:hover,
+.projectSummaryBox:focus {
+	text-decoration: none;
 }
