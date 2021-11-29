@@ -28,7 +28,7 @@ jobs:
         uses: c-hive/gha-yarn-cache@v2
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile --production --ignore-scripts --prefer-offline
+        run: yarn install --frozen-lockfile
         env:
           CI: true
 
@@ -41,6 +41,9 @@ jobs:
         run: yarn build
         env:
           CI: true
+
+      - name: Cleanup Node Modules
+        run: yarn install --production --ignore-scripts --prefer-offline
 
       - name: Build Docker Image
         run: docker build -t ${{ env.IMAGE_ID }}:${{ github.sha }} .
