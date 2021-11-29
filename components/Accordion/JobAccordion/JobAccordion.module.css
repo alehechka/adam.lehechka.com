@@ -1,0 +1,55 @@
+.jobSummaryBox {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+
+	font-size: large;
+	font-weight: 600;
+}
+
+.logo:hover,
+.logo:focus {
+	transform: scale(1.05);
+}
+
+.moveRight {
+	margin-left: auto;
+}
+
+.chevron {
+	transition: 0.25s transform ease;
+}
+
+details[open] > summary > .chevron {
+	transform: rotate(90deg);
+}
+
+.date {
+	color: var(--text-muted);
+}
+
+.skill {
+	font-size: small;
+	color: var(--text-muted);
+}
+
+.projectSummaryBox {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.skillsWrapper {
+	display: flex;
+	justify-content: space-between;
+	max-width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.jobSummaryBox:hover,
+.jobSummaryBox:focus,
+.projectSummaryBox:hover,
+.projectSummaryBox:focus {
+	text-decoration: none;
+}
