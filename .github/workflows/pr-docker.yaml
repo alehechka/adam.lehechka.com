@@ -8,7 +8,9 @@ on:
       - 'feature/docker-caching'
 
 env:
-  IMAGE_ID: ghcr.io/${{ github.repository }}
+  REGISTRY_HOSTNAME: ghcr.io
+  TAG: latest
+  BUILD_IMAGE: ${{ env.REGISTRY_HOSTNAME }}/${{ github.repository }}:${{ env.TAG }}
 
 jobs:
   lint-build-docker:
@@ -46,4 +48,4 @@ jobs:
         run: yarn install --production --ignore-scripts --prefer-offline
 
       - name: Build Docker Image
-        run: docker build -t ${{ env.IMAGE_ID }}:${{ github.sha }} .
+        run: docker build -t ${{ env.BUILD_IMAGE }} .
