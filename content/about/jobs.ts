@@ -1,4 +1,4 @@
-import { Job } from '@components/Accordion/JobAccordion/types';
+import { Job } from 'content/about/job';
 
 const jobs: Job[] = [
 	{
@@ -56,8 +56,29 @@ const jobs: Job[] = [
 		end: 'December 2019',
 		title: 'Software Development Intern',
 		logo: 'up.png',
-		description:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad tempora rerum quisquam pariatur, voluptatum facere eos aut quas doloribus culpa! Dolor dolores fuga repudiandae quo magni autem quasi adipisci modi.',
+		description: '',
+		projects: [
+			{
+				name: 'Real Estate Management System',
+				start: 'September 2019',
+				end: 'December 2019',
+				responsibilities: [
+					'Assumed a tech lead role for redesigning a legal document generation system.',
+					'Helped to transition legacy system into a modern web application.',
+				],
+			},
+			{
+				name: 'Revenue Shipment Process',
+				start: 'November 2018',
+				end: 'August 2019',
+				responsibilities: [
+					'Developed 10+ backend microservices utilizing Java, Springboot, and Eclipse.',
+					'Responsible for deployment of services to Integrated Cloud Environment.',
+					'Designed and developed a highly interactive frontend screen.',
+				],
+				skills: ['Java', 'Springboot', 'Angular', 'Eclipse'],
+			},
+		],
 	},
 	{
 		employer: 'Northrop Grumman',
@@ -66,8 +87,7 @@ const jobs: Job[] = [
 		end: 'October 2018',
 		title: 'College Technical Intern',
 		logo: 'ng.png',
-		description:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad tempora rerum quisquam pariatur, voluptatum facere eos aut quas doloribus culpa! Dolor dolores fuga repudiandae quo magni autem quasi adipisci modi.',
+		description: '',
 	},
 ];
 

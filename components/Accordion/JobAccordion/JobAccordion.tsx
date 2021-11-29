@@ -1,4 +1,4 @@
-import { Job } from './types';
+import { Job } from 'content/about/job';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './JobAccordion.module.css';
