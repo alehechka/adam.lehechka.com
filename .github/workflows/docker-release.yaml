@@ -5,7 +5,8 @@ on:
       - main
 
 env:
-  IMAGE_ID: ghcr.io/${{ github.repository }}
+  REGISTRY_HOSTNAME: ghcr.io
+  TAG: latest
 
 jobs:
   release:
@@ -13,17 +14,41 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Environment Variables
+        run: |
+          export BUILD_IMAGE=${{ env.REGISTRY_HOSTNAME }}/${{ github.repository }}:${{ env.TAG }}
+          echo "BUILD_IMAGE=$BUILD_IMAGE"
+          echo "BUILD_IMAGE=$BUILD_IMAGE" >> $GITHUB_ENV
+
       - name: Checkout Repo
         uses: actions/checkout@main
 
-      - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v1
+      - name: Setup Node.js (NPM)
+        uses: actions/setup-node@v2
         with:
-          install: true
+          node-version: '16.x'
 
-      - name: Log in to registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Cache Node Modules
+        uses: c-hive/gha-yarn-cache@v2
 
-      - name: Build amd64 Docker Image
-        run: docker build --platform linux/amd64 --push -t ${{ env.IMAGE_ID }}:latest .
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        env:
+          CI: true
+
+      - name: Build
+        run: yarn build
+        env:
+          CI: true
+
+      - name: Cleanup Node Modules
+        run: yarn install --production --ignore-scripts --prefer-offline
+
+      - name: Build Docker Image
+        run: docker build -t $BUILD_IMAGE .
+
+      - name: Login to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ${{ env.REGISTRY_HOSTNAME }} -u ${{ github.actor }} --password-stdin
+
+      - name: Build Docker Image
+        run: docker push $BUILD_IMAGE

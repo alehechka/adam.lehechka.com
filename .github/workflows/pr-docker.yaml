@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Environment Variables
         run: |
-          export ${{ env.REGISTRY_HOSTNAME }}/${{ github.repository }}:${{ env.TAG }}
+          export BUILD_IMAGE=${{ env.REGISTRY_HOSTNAME }}/${{ github.repository }}:${{ env.TAG }}
           echo "BUILD_IMAGE=$BUILD_IMAGE"
           echo "BUILD_IMAGE=$BUILD_IMAGE" >> $GITHUB_ENV
 
