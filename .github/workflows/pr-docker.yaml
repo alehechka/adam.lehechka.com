@@ -9,6 +9,8 @@ env:
 
 jobs:
   lint-build:
+    # skip this step for now
+    if: github.ref_type == 'tag'
     name: Lint and Build NextJS App
     runs-on: ubuntu-latest
 
@@ -47,8 +49,11 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@main
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+      # - name: Set up Docker Buildx
+      #   uses: docker/setup-buildx-action@v1
+
+      - name: Set up Docker with Caching
+        uses: satackey/action-docker-layer-caching@v0.0.11
 
       - name: Build amd64 Docker Image
-        run: docker build --platform linux/amd64 -t ${{ env.IMAGE_ID }}:${{ github.sha }} .
+        run: docker build -t ${{ env.IMAGE_ID }}:${{ github.sha }} .
