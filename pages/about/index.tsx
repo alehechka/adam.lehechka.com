@@ -5,9 +5,12 @@ const About = () => {
 	return (
 		<>
 			<h1>About</h1>
-			{jobs.map((job, index) => (
-				<JobAccordion key={index} {...job} />
-			))}
+			<h2>Professional Experience</h2>
+			<div>
+				{jobs.map((job, index) => (
+					<JobAccordion key={index} {...job} />
+				))}
+			</div>
 		</>
 	);
 };
