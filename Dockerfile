@@ -1,3 +1,15 @@
+FROM node:alpine as node-builder
+
+WORKDIR /app
+COPY . ./
+
+RUN yarn install --prefer-offline --frozen-lockfile
+
+RUN yarn build
+
+# Cleanup Node Modules
+RUN yarn install --production --ignore-scripts --prefer-offline
+
 # Production image, copy all the files and run next
 FROM node:alpine
 WORKDIR /app
@@ -9,16 +21,15 @@ RUN adduser -S nextjs -u 1001
 
 # You only need to copy next.config.js if you are NOT using the default configuration
 # COPY --from=builder /app/next.config.js ./
-COPY /public ./public
-COPY /.next ./.next
-COPY /node_modules ./node_modules
-COPY /package.json ./package.json
+COPY --from=node-builder /app/public ./public
+COPY --from=node-builder /app/.next ./.next
+COPY --from=node-builder /app/node_modules ./node_modules
+COPY --from=node-builder /app/package.json ./package.json
 
 USER nextjs
 
-EXPOSE 3000
-
-ENV PORT 3000
+ENV PORT 80
+EXPOSE 80
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
